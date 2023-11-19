@@ -1,0 +1,75 @@
+html[data-theme='light'] {
+    --bg: white;
+    --color-text: black;
+    --color-border: black;
+    --color-button: black;
+    --color-button-text: white;
+    --color-button-active: black;
+}
+
+html[data-theme='dark'] {
+    --bg: black;
+    --color-text: white;
+    --color-border: white;
+    --color-button: white;
+    --color-button-text: black;
+    --color-button-active: white;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--color-text);
+    font-family: Arial, Helvetica, sans-serif;
+}
+#areas polygon:not(#triangle, #square){
+    fill: var(--color-text);
+    stroke:var(--color-text);
+}
+#areas line{
+    stroke:var(--color-text);
+}
+
+#areas #triangle{
+    stroke:var(--color-text);
+}
+#areas #circle{
+    stroke:var(--color-text);
+}
+#areas #square{
+    stroke:var(--color-text);
+}
+
+.return-button{
+    display: block;
+    font-size: 15px;
+    border-radius: 7px;
+    border: 2px solid;
+    border-color: var(--color-border);
+    color: var(--color-button-text);
+    height: 35px;
+    padding: 1px;
+    background-color: var(--color-button);
+    cursor: pointer;
+}
+.return-button:hover {
+    background-color: #DCDCDC;
+}
+
+.return-button:active {
+    background-color: var(--color-button-active);
+}
+.x-slider{
+    color: black;
+}
+.form-block {
+    background-color: var(--bg);
+    color: var(--color-text);
+    border-color: var(--color-border);
+    border: 5px solid;
+    border-radius: 7px;
+    padding: 1%;
+    float: left;
+    margin-top: 3%;
+    text-align: center;
+    font-size: 17px;
+}

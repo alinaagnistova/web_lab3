@@ -1,0 +1,105 @@
+@font-face {
+    font-family: 'digital-font';
+    src: url("#{resource['fonts/digital-7.ttf']}");
+}
+
+/*todo почему эта шрифтовая хуйня не работает, сделать так, чтобы фрейм часов не менял размера в зависимости от размера цифр*/
+
+html[data-theme='light'] {
+    --bg: white;
+    --color-text: black;
+    --color-border: black;
+    --color-button: black;
+    --color-button-text: white;
+    --color-button-active: black;
+}
+
+html[data-theme='dark'] {
+    --bg: black;
+    --color-text: white;
+    --color-border: white;
+    --color-button: white;
+    --color-button-text: black;
+    --color-button-active: white;
+}
+
+.header {
+    border-style: solid;
+    border-color: var(--color-border);
+    border-width: 10px;
+    color: var(--color-text);
+    font-size: 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--color-text);
+    /*font-family: Arial, Helvetica, sans-serif;*/
+}
+
+#clock {
+    width:500px;
+    height:150px;
+    border-radius: 7px;
+    border-style: solid;
+    border-width: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    border-color: var(--color-border);
+    font-family: 'digital-font';
+    font-size: 150px;
+    text-align: center;
+}
+
+#for-clock {
+    display: inline-block;
+    border-radius: 7px;
+    padding: 2%;
+    margin-top: 10%;
+    margin-left: 36%;
+    border-style: solid;
+    border-width: 7px;
+    border-color: var(--color-border);
+}
+
+.forward-button {
+    margin-top: 2%;
+    margin-left: 50%;
+    display: block;
+    font-size: 20px;
+    border-radius: 7px;
+    border: 2px solid;
+    border-color: var(--color-border);
+    color: var(--color-button-text);
+    height: 38px;
+    padding: 2px;
+    background-color: var(--color-button);
+    cursor: pointer;
+}
+
+.forward-button:hover {
+    background-color: #DCDCDC;
+}
+
+.forward-button:active {
+    background-color: var(--color-button-active);
+}
+
+.change-theme-button {
+    margin-right: 95%;
+    margin-bottom: 1%;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.change-theme-button:hover {
+    background-color: #808080;
+}
+
+.change-theme-button:active {
+    background-color: white;
+}
+

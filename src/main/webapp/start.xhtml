@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>Start page</title>
+    <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/emoji.ico']}"/>
+    <h:outputStylesheet library="css" name="start.css"/>
+
+</h:head>
+<h:body>
+    <div class="header">
+        <h1>
+            Агнистова Алина Юрьевна
+        </h1>
+        <h3>Группа: P3225</h3>
+        <h3>Номер варианта:861304</h3>
+        <button id="theme-toggle" class="change-theme-button">
+            <img src="#{resource['images/daynight.ico']}" alt="Иконка" width="25" height="25"/>
+        </button>
+    </div>
+    <div id="for-clock">
+        <div id="clock"></div>
+    </div>
+    <h:button value="Главная" styleClass="forward-button" outcome="go-to-main"/>
+
+</h:body>
+<h:outputScript name="js/clock.js"/>
+<h:outputScript name="js/themeToggle.js"/>
+
+</html>

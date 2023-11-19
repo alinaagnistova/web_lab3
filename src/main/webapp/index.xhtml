@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/emoji.ico']}"/>
+<!--    TODO почему не виден стайлщит в ресурсах?-->
+    <!--    <h:outputStylesheet name="css/main.css"/>-->
+    <!--    <h:outputStylesheet library="css" name="main.css"/>-->
+
+</h:head>
+<h:body>
+    <div class="button-container">
+        <table class="buttons">
+            <tr>
+                <th>
+                    <h:button value="Назад" styleClass="return-button" outcome="go-to-start" id="go_to_start_button"/>
+                </th>
+                <th>
+                    <h:commandButton class="return-button" id="clear" type="submit" value="Очистить таблицу">
+                        <f:ajax listener="#{result.deleteResults}" render=":table"/>
+                    </h:commandButton>
+                </th>
+                <th>
+                    <button id="theme-toggle" class="change-theme-button">
+                        <img src="#{resource['images/daynight.ico']}" alt="Иконка" width="25" height="25"/>
+                    </button>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <div class="form-block">
+        <div class="window">
+            <svg width="320" height="320" id="areas" xmlns="http://www.w3.org/2000/svg">
+                <line x1="0" y1="160" x2="320" y2="160" stroke-width="1.6"/>
+                <line x1="160" y1="0" x2="160" y2="320" stroke-width="1.6"/>
+
+                <polygon id="1" points="320,160 312,156 312,164"/>
+                <polygon id="1" points="160,0 156,8 164,8"/>
+
+                <line x1="40" y1="156" x2="40" y2="164" stroke-width="1.6"/>
+                <line x1="120" y1="156" x2="120" y2="164" stroke-width="1.6"/>
+                <line x1="220" y1="156" x2="220" y2="164" stroke-width="1.6"/>
+                <line x1="280" y1="156" x2="280" y2="164" stroke-width="1.6"/>
+                <line x1="360" y1="156" x2="360" y2="164" stroke-width="1.6"/>
+
+                <text id="capt" x="22" y="152">-R</text>
+                <text id="capt" x="115" y="152">-R/2</text>
+                <text id="capt" x="216" y="152">R/2</text>
+                <text id="capt" x="275" y="152">R</text>
+                <!--              YR: -->
+                <line x1="156" y1="40" x2="164" y2="40" stroke-width="1.6"/>
+                <!--              YR/2: -->
+                <line x1="156" y1="120" x2="164" y2="120" stroke-width="1.6"/>
+                <!--              Y-R/2: -->
+                <line x1="156" y1="220" x2="164" y2="220" stroke-width="1.6"/>
+                <!--              Y-R: -->
+                <line x1="156" y1="280" x2="164" y2="280" stroke-width="1.6"/>
+                <line x1="156" y1="360" x2="164" y2="360" stroke-width="1.6"/>
+                <text x="165" y="44" id="capt">R</text>
+                <text x="165" y="124" id="capt">R/2</text>
+                <text x="165" y="224" id="capt">-R/2</text>
+                <text x="165" y="284" id="capt">-R</text>
+                <path id="circle" d="M160 160 L40 160 C40 100 90 50 160 40 L Z" fill="rgb(51,153,255)"
+                      stroke-width="1.6"/>
+                <polygon id="triangle" points="160,40 160,160 220,160" fill="rgb(51,153,255)"
+                         stroke-width="1.6"></polygon>
+                <polygon id="square" points="160,160 40,160 40,220 160,220" fill="rgb(51,153,255)" stroke="black"
+                         stroke-width="1.6"></polygon>
+            </svg>
+        </div>
+        <h:form id="valForm">
+            <div id="x-container">
+                <h:outputLabel for="x" value="Координата X:"/>
+                <h:inputText label="X" id="x" required="true" value="#{xBean.value}" maxlength="10"
+                             styleClass="x-input"/>
+            </div>
+            <div id="y-container">
+                <h:outputText value="Координата Y:"/>
+                <h:inputText label="Y" id="y" required="true" value="#{yBean.value}" maxlength="10"
+                             styleClass="y-input" validator="#{yBean.validateY}"/>
+<!--                <p:message for="y" />-->
+            </div>
+            <div id="r-container">
+                <h:outputText value="Радиус R:"/>
+                <h:selectOneRadio label="R" id="r" value="#{rBean.value}" required="true" styleClass="r-input" validator="#{rBean.validateR}">
+                    <f:selectItem itemLabel="1" itemValue="1"/>
+                    <f:selectItem itemLabel="2" itemValue="2"/>
+                    <f:selectItem itemLabel="3" itemValue="3"/>
+                    <f:selectItem itemLabel="4" itemValue="4"/>
+                    <f:selectItem itemLabel="5" itemValue="5"/>
+                </h:selectOneRadio>
+            </div>
+            <table class="form-buttons">
+                <tr>
+                    <th><h:commandButton type="submit" value="Отправить" styleClass="data-button">
+                        <f:ajax execute="@form" listener="#{result.addRow(xBean.value, yBean.value, rBean.value)}" render=":table" />
+                    </h:commandButton>
+                    </th>
+                    <th><h:commandButton type="reset" value="Сбросить" onclick="resetForm()" styleClass="data-button"/></th>
+                </tr>
+            </table>
+        </h:form>
+    </div>
+    <div class="table-block">
+        <h:outputText value="Результаты" styleClass="table-caption"/>
+        <h:dataTable id="table" cellspacing="6" cellpadding="15" styleClass="result-table" value="#{result.results}" var="point" >
+        <p:remoteCommand name=""/>
+        <h:column>
+            <f:facet name="header"> Координата X</f:facet>
+            <h:outputText id="x1" value="#{point.x}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Координата Y</f:facet>
+            <h:outputText id="y1" value="#{point.y}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Радиус R</f:facet>
+            <h:outputText id="r1" value="#{point.r}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Факт попадания в область</f:facet>
+            <h:outputText id="status" value="#{point.result}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Текущее время</f:facet>
+            <h:outputText id="time" value="#{point.time}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Время работы (ms)</f:facet>
+            <h:outputText id="script-time" value="#{point.scriptTime}"/>
+        </h:column>
+    </h:dataTable>
+    </div>
+</h:body>
+<h:outputScript name="js/themeToggle.js"/>
+<h:outputScript name="js/script.js"/>
+<h:outputScript name="js/svgInteractive.js"/>
+
+</html>
