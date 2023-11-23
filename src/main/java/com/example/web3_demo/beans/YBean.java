@@ -1,4 +1,4 @@
-package com.example.web3_demo;
+package com.example.web3_demo.beans;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.application.FacesMessage;
@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Named
 @ApplicationScoped
 public class YBean implements Serializable {
-    private String value;
+    private String value = "0";
 
     public String getValue() {
         return value;

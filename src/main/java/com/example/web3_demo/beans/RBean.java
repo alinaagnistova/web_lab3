@@ -1,4 +1,4 @@
-package com.example.web3_demo;
+package com.example.web3_demo.beans;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.application.FacesMessage;
@@ -11,8 +11,8 @@ import java.io.Serializable;
 
 @Named
 @ApplicationScoped
-public class XBean implements Serializable {
-    private String value;
+public class RBean implements Serializable {
+    private String value = "0";
 
     public String getValue() {
         return value;
@@ -21,20 +21,19 @@ public class XBean implements Serializable {
     public void setValue(String value) {
         this.value = value;
     }
-    public void validateX(FacesContext facesContext, UIComponent uiComponent, Object object){
+    public void validateR(FacesContext facesContext, UIComponent uiComponent, Object object){
         if (object == null){
-            FacesMessage message = new FacesMessage("Укажите X");
+            FacesMessage message = new FacesMessage("Укажите R");
             throw new ValidatorException(message);
         }
         String strObj = object.toString().trim();
         if (!strObj.matches("-?\\d+(\\.\\d+)?")) {
-//            FacesUtil.errorMessage("valForm:x", "Ошибка","Нет, так не надо. Надо вот так: X - число");
-            FacesMessage message = new FacesMessage("Нет, так не надо. Надо вот так: X - число");
+            FacesMessage message = new FacesMessage("Нет, так не надо. Надо вот так: R - число");
             throw new ValidatorException(message);
         }
-        float x = Float.parseFloat(strObj);
-        if (x < -2 || x > 2){
-            FacesMessage message = new FacesMessage("X должен быть в диапазоне [-2;2]");
+        float r = Float.parseFloat(strObj);
+        if (r < 1|| r > 5){
+            FacesMessage message = new FacesMessage("R должен быть в диапазоне [1;5]");
             throw new ValidatorException(message);
         }
     }
@@ -42,11 +41,11 @@ public class XBean implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof XBean)) return false;
+        if (!(o instanceof RBean)) return false;
 
-        XBean xBean = (XBean) o;
+        RBean rBean = (RBean) o;
 
-        return getValue() != null ? getValue().equals(xBean.getValue()) : xBean.getValue() == null;
+        return getValue() != null ? getValue().equals(rBean.getValue()) : rBean.getValue() == null;
     }
 
     @Override
@@ -54,3 +53,4 @@ public class XBean implements Serializable {
         return getValue() != null ? getValue().hashCode() : 0;
     }
 }
+

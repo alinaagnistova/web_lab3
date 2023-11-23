@@ -169,7 +169,7 @@ body {
     margin-left: 31%;
 }
 
-.result-table td,
+.result-table th,
 .result-table td{
     border: 3px dashed #95918C;
     padding:10px;

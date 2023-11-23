@@ -30,7 +30,23 @@
 //         }
 //     )
 // }
-
+function getRValue(){
+    let value;
+    if(document.forms['valForm']['valForm:r'][0].checked === true ){
+        value = 1;
+    }else if(document.forms['valForm']['valForm:r'][1].checked === true ){
+        value = 2;
+    }else if(document.forms['valForm']['valForm:r'][2].checked === true ){
+        value = 3;
+    }else if(document.forms['valForm']['valForm:r'][3].checked === true ){
+        value = 4;
+    }else if(document.forms['valForm']['valForm:r'][4].checked === true ){
+        value = 5;
+    }else{
+        value = -1;
+    }
+    return value;
+}
 function showError(element, message) {
     const errorElement = document.createElement('div');
     errorElement.classList.add('error-message');

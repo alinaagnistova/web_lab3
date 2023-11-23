@@ -1,4 +1,4 @@
-package com.example.web3_demo;
+package com.example.web3_demo.entities;
 
 
 
