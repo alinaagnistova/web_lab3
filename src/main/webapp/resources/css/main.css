@@ -70,8 +70,6 @@ body {
 }
 
 .change-theme-button {
-    /*margin-right: 95%;*/
-    /*margin-bottom: 1%;*/
     border-radius: 5px;
     background-color: white;
     cursor: pointer;
@@ -91,18 +89,10 @@ body {
     border: 3px dashed #95918C;
 }
 
-/*.x-slider {*/
-/*    width: 200px;*/
-/*    margin-top: 5.5%;*/
-/*    margin-left: 20%;*/
-/*}*/
-
-/*TODO стиль почему-то не применяется*/
 .r-container {
     margin-top: 5%;
 }
 
-/*TODO как сделать так, чтобы надпись была на одной строке, а само поле на другой*/
 .y-input {
     margin-top: 7%;
     margin-left: 2%;
