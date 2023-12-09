@@ -3,8 +3,6 @@
     src: url("#{resource['fonts/digital-7.ttf']}");
 }
 
-/*todo почему эта шрифтовая хуйня не работает, сделать так, чтобы фрейм часов не менял размера в зависимости от размера цифр*/
-
 html[data-theme='light'] {
     --bg: white;
     --color-text: black;
@@ -37,7 +35,6 @@ html[data-theme='dark'] {
 body {
     background-color: var(--bg);
     color: var(--color-text);
-    /*font-family: Arial, Helvetica, sans-serif;*/
 }
 
 #clock {
